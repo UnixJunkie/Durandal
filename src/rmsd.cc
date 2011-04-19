@@ -30,8 +30,10 @@
  *
  */
 
-#include <stdio.h>
+#include <cstdlib>
 #include <math.h>
+#include <stdio.h>
+
 #include "rmsd.h"
 /*========================================
  *
@@ -156,6 +158,7 @@ void setup_rotation(double** ref_xlist, //[][3],
 int jacobi3(double a[3][3], double d[3], double v[3][3], int* n_rot)
 {
   int count, k, i, j;
+  int max_trials = 50;
   double tresh, theta, tau, t, sum, s, h, g, c, b[3], z[3];
 
   /*Initialize v to the identity matrix.*/
@@ -176,8 +179,7 @@ int jacobi3(double a[3][3], double d[3], double v[3][3], int* n_rot)
 
   *n_rot = 0;
 
-  /* 50 tries */
-  for (count=0; count<50; count++)
+  for (count=0; count < max_trials; ++count)
     {
 
       /* sum off-diagonal elements */
@@ -266,8 +268,10 @@ int jacobi3(double a[3][3], double d[3], double v[3][3], int* n_rot)
         }
     }
 
-  printf("Too many iterations in jacobi3\n");
-  return (0);
+  std::cerr << __FILE__ << ':' << __LINE__ << ':' << __PRETTY_FUNCTION__ << ':'
+            << " did not converge after " << max_trials << " trials."
+            << std::endl;
+  exit(1);
 }
 
 /*
