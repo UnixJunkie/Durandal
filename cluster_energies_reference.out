@@ -1,0 +1,28 @@
+pole position centers(5):
+./pdbs/02.pdb
+./pdbs/03.pdb
+./pdbs/05.pdb
+./pdbs/07.pdb
+./pdbs/09.pdb
+min: 11 max: 17 avg: 13.6667 med: 13
+min: 12 max: 18 avg: 15.3333 med: 16
+members(3):
+./pdbs/01.pdb:11:18
+./pdbs/03.pdb:13:16
+./pdbs/07.pdb:17:12
+min: 12 max: 19 avg: 15.3333 med: 15
+min: 10 max: 17 avg: 13.6667 med: 14
+members(3):
+./pdbs/02.pdb:12:17
+./pdbs/05.pdb:15:14
+./pdbs/09.pdb:19:10
+min: 10 max: 16 avg: 13 med: 13
+min: 13 max: 19 avg: 16 med: 16
+members(2):
+./pdbs/00.pdb:10:19
+./pdbs/06.pdb:16:13
+min: 14 max: 18 avg: 16 med: 16
+min: 11 max: 15 avg: 13 med: 13
+members(2):
+./pdbs/04.pdb:14:15
+./pdbs/08.pdb:18:11

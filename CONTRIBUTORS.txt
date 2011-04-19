@@ -1,0 +1,10 @@
+Francois Berenger: DistMatrix.{cc|h}, DistRange.{cc|h}, Singleton.{cc|h},
+Tests.cc, TestsRunner.cc, Triple.{cc|h}, durandal.cc, max_cluster.cc,
+ranker.cc.
+
+Pau Arumi & David Garcia: MiniCppUnit.h, MiniCppUnit.cc, MiniCppUnitExample.cc.
+
+Shuai Cheng Li and Yen Kaow Ng: SimpPDB.{cc|h}, Stru.{cc|h}, some code
+simplified and hardened by Francois Berenger.
+
+Bosco K Ho: rmsd.{cc|h}, some cleaning by Francois Berenger.
