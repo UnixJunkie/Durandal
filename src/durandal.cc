@@ -100,6 +100,7 @@ int usage() {
        << "title   = {Entropy-accelerated exact clustering of protein "
        << "decoys}\n"
        << "journal = {Bioinformatics}\n"
+       << "doi     = {10.1093/bioinformatics/btr072}\n"
        << "################################################################"
        << "####\n";
   exit(1);
