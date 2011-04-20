@@ -66,8 +66,8 @@ string get_option(int argc, char** argv, string short_opt, string long_opt) {
   return res;
 }
 
-int usage() {
-  cout << "usage: ./durandal -i pdb_list -o file\n"
+int usage(char* program_name) {
+  cout << "usage: " << program_name << " -i pdb_list -o file\n"
        << "                  {-b|-s} [-v]\n"
        << "STANDARD OPTIONS:\n"
        << "  --semi-auto dist_percent : choose cutoff to accept\n"
@@ -203,7 +203,7 @@ int main(int argc, char** argv) {
   // </KEEP THIS AS FIRST THING IN MAIN>
 
   if (argc == 1 or contains(argc, argv, "-h", "--help")) {
-    usage();
+    usage(argv[0]);
   }
 
   // seed Random Number Generator
@@ -228,7 +228,7 @@ int main(int argc, char** argv) {
   string input_file = get_option(argc, argv, "-i");
   if (input_file == "") {
     cout << "error: -i pdb_list is mandatory" << endl;
-    usage();
+    usage(argv[0]);
   }
   string distance = get_option(argc, argv, "-d");
   if (auto_threshold) {
@@ -254,11 +254,11 @@ int main(int argc, char** argv) {
   }
   if (not single._brute_mode and not single._smart_mode) {
     cout << "error: -b or -s is mandatory" << endl;
-    return usage();
+    return usage(argv[0]);
   }
   if (single._brute_mode and single._smart_mode) {
     cout << "error: -b XOR -s" << endl;
-    return usage();
+    return usage(argv[0]);
   }
   float clustering_distance = atof(distance.c_str());
 
@@ -292,7 +292,7 @@ int main(int argc, char** argv) {
   ofstream out (output_file.c_str());
   if (not out.is_open()) {
     cout << "error: cannot write to: " << output_file << endl;
-    usage();
+    usage(argv[0]);
   }
   // find and print all clusters
   vector<int> remaining_pdbs = dm.get_all_PDBs_index();

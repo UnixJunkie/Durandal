@@ -69,11 +69,11 @@ int main (int argc, char** argv) {
 
   if (argc != 2) {
     cout << "Output on stdout the CARMSD of each PDB in the list to the\n"
-         << "first one in the list (for example, you may want to put as "
+         << "first one in the list (for example, you may want to put as\n"
          << "first PDB the one for the known structure).\n"
          << "---" << endl;
-    //              0        1
-    cout << "usage: ./ranker PDB_list" << endl;
+    //                   0            1
+    cout << "usage: " << argv[0] << " PDB_list" << endl;
     return 1;
   }
 
