@@ -52,13 +52,12 @@ env = Environment (ENV = {'PATH' : os.environ['PATH'], # used by colorgcc
                    CCFLAGS = parse_flags_content,
                    LINKFLAGS = link_flags)
 
-durandal_prog = env.Program(
-    'durandal',
+cluster = env.Program(
+    'durandal.cluster_pdbs',
     ['build/durandal.cc','build/DistMatrix.cc','build/DistRange.cc',
      'build/Stru.cc','build/SimpPDB.cc','build/rmsd.cc','build/Triple.cc',
      'build/Singleton.cc'])
 
-maxmem_prog = env.Program('maxcluster', ['build/max_cluster.cc'])
-
-ranker_prog = env.Program('ranker', ['build/ranker.cc','build/Stru.cc',
-                                     'build/SimpPDB.cc','build/rmsd.cc'])
+rank_pdbs = env.Program('durandal.rank_pdbs',
+                        ['build/ranker.cc','build/Stru.cc',
+                         'build/SimpPDB.cc','build/rmsd.cc'])
