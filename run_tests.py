@@ -1,20 +1,30 @@
 def run(args):
-  assert len(args) == 0
+  assert args in [[], ["--valgrind"]]
+  valgrind = "--valgrind" in args
   from libtbx.test_utils import show_diff
   from libtbx.utils import remove_files
   from libtbx import easy_run
+  from itertools import count
   import libtbx.load_env
   import os
   op = os.path
   dd = libtbx.env.dist_path(module_name="Durandal")
+  run_serial = count()
   def run_and_check(cmd, pdbs_file, expected_out):
     abs_paths = []
     for rel_path in open(op.join(dd, pdbs_file)).read().splitlines():
       abs_paths.append(op.normpath(op.join(dd, rel_path)))
-    print >> open("list_of_pdbs", "w"), "\n".join(abs_paths)
-    remove_files("out")
+    list_of_pdbs = "list_of_pdbs_%d" % run_serial.next()
+    print >> open(list_of_pdbs, "w"), "\n".join(abs_paths)
+    cmd = cmd % list_of_pdbs
+    if (valgrind):
+      cmd = "valgrind " + cmd
     print cmd
-    easy_run.fully_buffered(command=cmd).raise_if_errors()
+    remove_files("out")
+    if (not valgrind):
+      easy_run.fully_buffered(command=cmd).raise_if_errors()
+    else:
+      easy_run.call(command=cmd)
     filtered_lines = []
     for line in open("out").read().splitlines():
       sw = line.startswith
@@ -31,17 +41,17 @@ members(2): 0 6
 members(2): 4 8
 """
   run_and_check(
-    cmd="durandal.cluster_pdbs -i list_of_pdbs -d 2.0 --brute -o out -m -1",
+    cmd="durandal.cluster_pdbs -i %s -d 2.0 --brute -o out -m -1",
     pdbs_file="very_few_pdbs",
     expected_out=expected_out)
   #
   run_and_check(
-    cmd="durandal.cluster_pdbs -i list_of_pdbs -d 2.0 --smart -o out -m -1",
+    cmd="durandal.cluster_pdbs -i %s -d 2.0 --smart -o out -m -1",
     pdbs_file="very_few_pdbs",
     expected_out=expected_out)
   #
   run_and_check(
-    cmd="durandal.cluster_pdbs -i list_of_pdbs -d 2.0 -s -o out -m -1 -v",
+    cmd="durandal.cluster_pdbs -i %s -d 2.0 -s -o out -m -1 -v",
     pdbs_file="very_few_pdbs_e",
     expected_out="""\
 pole position centers(5):

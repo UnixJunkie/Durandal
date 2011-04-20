@@ -29,7 +29,7 @@ class DistRange {
 
  private:
 
-  static const float ABSOLUTE_MIN = 0.0;
+  static const float ABSOLUTE_MIN;
   static float ABSOLUTE_MAX(); // FBR: dirty but works
 
  public:

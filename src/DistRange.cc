@@ -25,6 +25,8 @@
 
 #include "DistRange.h"
 
+const float DistRange::ABSOLUTE_MIN = 0.0;
+
 float DistRange::ABSOLUTE_MAX() {
   return numeric_limits<float>::max();
 }
