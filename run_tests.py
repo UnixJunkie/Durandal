@@ -22,9 +22,13 @@ def run(args):
     print cmd
     remove_files("out")
     if (not valgrind):
-      easy_run.fully_buffered(command=cmd).raise_if_errors()
+      buffers = easy_run.fully_buffered(command=cmd).raise_if_errors()
+      if (expected_out is None):
+        return buffers.stdout_lines
     else:
       easy_run.call(command=cmd)
+      if (expected_out is None):
+        return None
     filtered_lines = []
     for line in open("out").read().splitlines():
       sw = line.startswith
@@ -67,6 +71,28 @@ members(2):
 min: 14 max: 18 avg: 16 med: 16
 min: 11 max: 15 avg: 13 med: 13
 members(2):
+""")
+  #
+  stdout_lines = run_and_check(
+    cmd="durandal.rank_pdbs %s",
+    pdbs_file="very_few_pdbs",
+    expected_out=None)
+  if (stdout_lines is not None):
+    rmsds = []
+    for line in stdout_lines:
+      flds = line.split(":")
+      assert len(flds) == 2, line
+      rmsds.append(flds[1])
+    assert not show_diff("\n".join(rmsds)+"\n", """\
+14.2461
+13.7164
+14.0825
+12.7381
+13.7061
+1.68059
+14.1291
+12.7479
+13.7903
 """)
   #
   print "Done."
