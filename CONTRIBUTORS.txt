@@ -8,3 +8,5 @@ Shuai Cheng Li and Yen Kaow Ng: SimpPDB.{cc|h}, Stru.{cc|h}, some code
 simplified and hardened by Francois Berenger.
 
 Bosco K Ho: rmsd.{cc|h}, some cleaning by Francois Berenger.
+
+Ralf W. Grosse-Kunstleve: Phenix integration (http://www.phenix-online.org).
