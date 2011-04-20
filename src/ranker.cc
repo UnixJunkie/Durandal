@@ -26,10 +26,10 @@
 #include "Stru.h"
 #include "rmsd.h"
 
-int _mLen        = 0;
-float* _previous = NULL;
-double** _mPOS1  = NULL;
-double** _mPOS2  = NULL;
+int mLen        = 0;
+float* previous = NULL;
+double** mPOS1  = NULL;
+double** mPOS2  = NULL;
 
 // WARNING: this function is not thread safe, not good for OpenMP
 float ca_rmsd(float* coor1, float* coor2) {
@@ -41,26 +41,26 @@ float ca_rmsd(float* coor1, float* coor2) {
   double rmsd;
   int k3;
 
-  if (coor1 == _previous) {
-    for (int k = 0; k < _mLen; ++k) {
+  if (coor1 == previous) {
+    for (int k = 0; k < mLen; ++k) {
       k3 = k*3;
-      _mPOS2[k][0] = coor2[k3];
-      _mPOS2[k][1] = coor2[k3 + 1];
-      _mPOS2[k][2] = coor2[k3 + 2];
+      mPOS2[k][0] = coor2[k3];
+      mPOS2[k][1] = coor2[k3 + 1];
+      mPOS2[k][2] = coor2[k3 + 2];
     }
   } else {
-    for (int k = 0; k < _mLen; ++k) {
+    for (int k = 0; k < mLen; ++k) {
       k3 = k*3;
-      _mPOS1[k][0] = coor1[k3];
-      _mPOS1[k][1] = coor1[k3 + 1];
-      _mPOS1[k][2] = coor1[k3 + 2];
-      _mPOS2[k][0] = coor2[k3];
-      _mPOS2[k][1] = coor2[k3 + 1];
-      _mPOS2[k][2] = coor2[k3 + 2];
+      mPOS1[k][0] = coor1[k3];
+      mPOS1[k][1] = coor1[k3 + 1];
+      mPOS1[k][2] = coor1[k3 + 2];
+      mPOS2[k][0] = coor2[k3];
+      mPOS2[k][1] = coor2[k3 + 1];
+      mPOS2[k][2] = coor2[k3 + 2];
     }
   }
-  fast_rmsd(_mPOS1, _mPOS2, _mLen, &rmsd);
-  _previous = coor1;
+  fast_rmsd(mPOS1, mPOS2, mLen, &rmsd);
+  previous = coor1;
 
   return (float)rmsd;
 }
@@ -92,16 +92,16 @@ int main (int argc, char** argv) {
 
     if (not initialized) {
       reference = new SimPDB(current_line.c_str(), false);
-      _mLen  = reference->mNumResidue;
-      _mPOS1 = new double* [_mLen];
-      _mPOS2 = new double* [_mLen];
-      for (int i = 0; i < _mLen; ++i) {
-        _mPOS1[i] = new double[3];
-        _mPOS2[i] = new double[3];
+      mLen  = reference->mNumResidue;
+      mPOS1 = new double* [mLen];
+      mPOS2 = new double* [mLen];
+      for (int i = 0; i < mLen; ++i) {
+        mPOS1[i] = new double[3];
+        mPOS2[i] = new double[3];
       }
       initialized = true;
     } else {
-      SimPDB* sim = new SimPDB(current_line.c_str(), _mLen, false);
+      SimPDB* sim = new SimPDB(current_line.c_str(), mLen, false);
       //   float* coor2 = (*_read_pdbs)[j]->mCAlpha;
       cout << current_line << ":"
            << ca_rmsd(reference->mCAlpha, sim->mCAlpha) << '\n';
@@ -110,12 +110,12 @@ int main (int argc, char** argv) {
   }
 
   delete reference;
-  for (int i = 0; i < _mLen; ++i) {
-    delete [] _mPOS1[i];
-    delete [] _mPOS2[i];
+  for (int i = 0; i < mLen; ++i) {
+    delete [] mPOS1[i];
+    delete [] mPOS2[i];
   }
-  delete [] _mPOS1;
-  delete [] _mPOS2;
+  delete [] mPOS1;
+  delete [] mPOS2;
 
   return 0;
 }

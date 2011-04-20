@@ -21,8 +21,8 @@
  *  Shuai Cheng Li and Yen Kaow Ng
  *  **************************************************************************/
 
-#ifndef _SIMP_PDB
-#define _SIMP_PDB
+#ifndef SIMP_PDB
+#define SIMP_PDB
 
 #define LONGEST_CHAIN 4000
 #include <iostream>
@@ -40,4 +40,5 @@ class SimPDB
   SimPDB(const char* aProteinFileName, int len, bool use_URMSD);
   ~SimPDB();
 };
-#endif
+
+#endif /* SIMP_PDB */

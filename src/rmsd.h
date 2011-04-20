@@ -29,8 +29,8 @@
  *  **************************************************************************
  *
  */
-#ifndef _rmsd_h_
-#define _rmsd_h_
+#ifndef RMSD_H
+#define RMSD_H
 
 #include "Stru.h"
 
@@ -74,4 +74,4 @@ void fast_rmsd(double** ref_xlist,
                int n_list,
                double* rmsd);
 
-#endif /* _rmsd_h_ */
+#endif /* RMSD_H */
