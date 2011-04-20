@@ -1,0 +1,21 @@
+Import("env_base", "env_etc")
+
+env = env_base.Clone(LIBS=env_etc.libm)
+
+lib = env.StaticLibrary(
+  target=["durandal"],
+  source="""\
+DistMatrix.cc
+DistRange.cc
+SimpPDB.cc
+Singleton.cc
+Stru.cc
+Triple.cc
+rmsd.cc
+""".splitlines())
+
+for name in ["durandal", "ranker", "maxcluster"]:
+  src = {"maxcluster": "max_cluster"}.get(name, name)
+  trg = name
+  if (trg != "durandal"): trg = "durandal."+trg
+  env.Program(target="#bin/%s" % trg, source=[src+".cc", lib])
