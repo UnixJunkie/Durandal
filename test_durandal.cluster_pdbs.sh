@@ -19,5 +19,16 @@
 
 #set -x
 
-./test_durandal.cluster_pdbs.sh
-./test_durandal.rank_pdbs.sh
+rm -f out current.out
+./durandal.cluster_pdbs -i ./very_few_pdbs -d 2.0 --brute -o out -m -1 > \
+/dev/null
+egrep "^members|^pole" out > current.out
+diff reference.out current.out
+./durandal.cluster_pdbs -i ./very_few_pdbs -d 2.0 --smart -o out -m -1 > \
+/dev/null
+egrep "^members|^pole" out > current.out
+diff reference.out current.out
+# test clusters' energy characteristics
+./durandal.cluster_pdbs -i ./very_few_pdbs_e -d 2.0 -s -o out -m -1 -v > \
+/dev/null
+diff out cluster_energies_reference.out
