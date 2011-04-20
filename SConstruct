@@ -55,8 +55,7 @@ env = Environment (ENV = {'PATH' : os.environ['PATH'], # used by colorgcc
 cluster = env.Program(
     'durandal.cluster_pdbs',
     ['build/durandal.cc','build/DistMatrix.cc','build/DistRange.cc',
-     'build/Stru.cc','build/SimpPDB.cc','build/rmsd.cc','build/Triple.cc',
-     'build/Singleton.cc'])
+     'build/Stru.cc','build/SimpPDB.cc','build/rmsd.cc','build/Singleton.cc'])
 
 rank_pdbs = env.Program('durandal.rank_pdbs',
                         ['build/ranker.cc','build/Stru.cc',

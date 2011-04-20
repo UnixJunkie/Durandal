@@ -33,7 +33,6 @@
 
 #include "DistRange.h"
 #include "Stru.h"
-#include "Triple.h"
 
 using namespace std;
 

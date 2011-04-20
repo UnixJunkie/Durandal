@@ -10,7 +10,6 @@ DistRange.cc
 SimpPDB.cc
 Singleton.cc
 Stru.cc
-Triple.cc
 rmsd.cc
 """.splitlines())
 

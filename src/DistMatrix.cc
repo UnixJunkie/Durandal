@@ -31,7 +31,6 @@
 #include "DistMatrix.h"
 #include "SimpPDB.h"
 #include "Singleton.h"
-#include "Triple.h"
 #include "rmsd.h"
 
 Single& single = Single::instance(); // global var to this file
