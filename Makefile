@@ -15,8 +15,8 @@
 all:    tags
 	scons opt=true
 
-fast:
-	scons
+debug:
+	scons debug=true
 
 tags:
 	find . -name "*.cc" >  src_files
@@ -26,9 +26,6 @@ tags:
 
 test: all
 	./test.sh
-
-debug:
-	scons debug=true
 
 clean:
 	scons -c
@@ -41,23 +38,13 @@ compile:
 	mkdir -p build
 	g++ -o build/DistMatrix.o ${COPTS} src/DistMatrix.cc
 	g++ -o build/DistRange.o ${COPTS} src/DistRange.cc
-	g++ -o build/MiniCppUnit.o ${COPTS} src/MiniCppUnit.cc
-	g++ -o build/MiniCppUnitExample.o ${COPTS} src/MiniCppUnitExample.cc
 	g++ -o build/SimpPDB.o ${COPTS} src/SimpPDB.cc
 	g++ -o build/Singleton.o ${COPTS} src/Singleton.cc
 	g++ -o build/Stru.o ${COPTS} src/Stru.cc
-	g++ -o build/Tests.o ${COPTS} src/Tests.cc
-	g++ -o build/TestsRunner.o ${COPTS} src/TestsRunner.cc
-	g++ -o build/Triple.o ${COPTS} src/Triple.cc
 	g++ -o build/durandal.o ${COPTS} src/durandal.cc
-	g++ -o build/max_cluster.o ${COPTS} src/max_cluster.cc
 	g++ -o build/ranker.o ${COPTS} src/ranker.cc
 	g++ -o build/rmsd.o ${COPTS} src/rmsd.cc
-	g++ -o maxcluster build/max_cluster.o
-	g++ -o ranker build/ranker.o build/Stru.o build/SimpPDB.o build/rmsd.o
-	g++ -o unit_tests build/Tests.o build/TestsRunner.o \
-build/MiniCppUnitExample.o build/MiniCppUnit.o build/DistMatrix.o \
-build/DistRange.o build/Stru.o build/SimpPDB.o build/rmsd.o build/Triple.o \
-build/Singleton.o
-	g++ -o durandal build/durandal.o build/DistMatrix.o build/DistRange.o \
-build/Stru.o build/SimpPDB.o build/rmsd.o build/Triple.o build/Singleton.o
+	g++ -o durandal.rank_pdbs build/ranker.o build/Stru.o build/SimpPDB.o \
+build/rmsd.o
+	g++ -o durandal.cluster_pdbs build/durandal.o build/DistMatrix.o \
+build/DistRange.o build/Stru.o build/SimpPDB.o build/rmsd.o build/Singleton.o
