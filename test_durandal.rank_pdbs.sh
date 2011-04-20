@@ -17,7 +17,7 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-set -x
+#set -x
 
 rm -f very_few_pdbs_rmsd_current
 ./durandal.rank_pdbs ./very_few_pdbs > very_few_pdbs_rmsd_current
