@@ -447,12 +447,12 @@ void DistMatrix::smart_init() {
       //cout << "switched to brute\n";
       cout << "smart init decided:   "
            << 100*((float)(previous_nb_undecided - _nb_undecided) /
-                   (float)_nb_pairs) << " \%\n";
+                   (float)_nb_pairs) << " %\n";
       previous_nb_undecided = _nb_undecided;
       brute_finish();
       cout << "brute_finish decided: "
            << 100*((float)(previous_nb_undecided - _nb_undecided) /
-                   (float)_nb_pairs) << " \%\n";
+                   (float)_nb_pairs) << " %\n";
     }
   }
   if (not switched) {
