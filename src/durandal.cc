@@ -287,7 +287,7 @@ int main(int argc, char** argv) {
     dm.brute_init();
   } else { // assuming single._smart_mode
     dm.smart_init();
-  } 
+  }
 
   ofstream out (output_file.c_str());
   if (not out.is_open()) {
