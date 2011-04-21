@@ -26,12 +26,15 @@
 
 #define LONGEST_CHAIN 4000
 #include <iostream>
+#include <string>
+
+#include <iso646.h>
 
 using namespace std;
 class SimPDB
 {
  public:
-  const char* mProteinFileName;
+  std::string mProteinFileName;
   int mNumResidue;
   //double mSquaredSum;
   float * mCAlpha;

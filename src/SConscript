@@ -1,4 +1,5 @@
 Import("env_base", "env_etc")
+import os
 
 env = env_base.Clone(LIBS=env_etc.libm)
 
@@ -16,4 +17,6 @@ rmsd.cc
 for trg,src in [
       ("cluster_pdbs", "durandal"),
       ("rank_pdbs", "ranker")]:
+  if (os.name == "nt"):
+    trg += ".exe"
   env.Program(target="#bin/durandal.%s" % trg, source=[src+".cc", lib])

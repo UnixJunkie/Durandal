@@ -21,6 +21,8 @@
 #ifndef DIST_RANGE_H
 #define DIST_RANGE_H
 
+#include <iso646.h>
+
 using namespace std;
 
 static const float ENTROPY_BOUND = 100.0;

@@ -81,8 +81,8 @@ members(2):
     rmsds = []
     for line in stdout_lines:
       flds = line.split(":")
-      assert len(flds) == 2, line
-      rmsds.append(flds[1])
+      assert len(flds) >= 2
+      rmsds.append(flds[-1])
     assert not show_diff("\n".join(rmsds)+"\n", """\
 14.2461
 13.7164
@@ -94,6 +94,7 @@ members(2):
 12.7479
 13.7903
 """)
+  print "OK"
   #
   print "Done."
 

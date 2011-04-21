@@ -268,7 +268,7 @@ int jacobi3(double a[3][3], double d[3], double v[3][3], int* n_rot)
         }
     }
 
-  std::cerr << __FILE__ << ':' << __LINE__ << ':' << __PRETTY_FUNCTION__ << ':'
+  std::cerr << __FILE__ << ':' << __LINE__ << ':' << __FUNCTION__ << ':'
             << " did not converge after " << max_trials << " trials."
             << std::endl;
   exit(1);

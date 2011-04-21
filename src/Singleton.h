@@ -27,7 +27,12 @@
 #include <string>
 #include <vector>
 #include <cstdlib>
+
+#if defined(_MSC_VER)
+#include <time.h>
+#else
 #include <sys/times.h>
+#endif
 
 using namespace std;
 

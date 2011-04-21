@@ -21,6 +21,7 @@
 #include <cstdlib>
 #include <fstream>
 #include <iostream>
+#include <string>
 
 #include "SimpPDB.h"
 #include "Stru.h"

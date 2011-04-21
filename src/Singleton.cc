@@ -19,6 +19,7 @@
  *****************************************************************************/
 
 #include <iostream>
+#include <ctime>
 
 #include "Singleton.h"
 
@@ -65,9 +66,15 @@ size_t rand_between(size_t lower_bound, size_t upper_bound) {
 
 // 'man times' for details (Linux Programmer's Manual (2))
 clock_t get_user_plus_system_times() {
+#if defined(_MSC_VER)
+  static std::clock_t t_start = std::clock();
+  return static_cast<double>(std::clock() - t_start)
+       / static_cast<double>(CLOCKS_PER_SEC);
+#else
   struct tms t;
   times(&t);
   return (t.tms_utime + t.tms_stime);
+#endif
 }
 
 // remove i from v

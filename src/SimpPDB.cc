@@ -100,7 +100,7 @@ SimPDB::~SimPDB()
 void
 SimPDB::read(int expected_count, bool use_URMSD)
 {
-  ifstream input(mProteinFileName);
+  ifstream input(mProteinFileName.c_str());
   if(!input) {
     cerr<<"Cannot find protein file |" << mProteinFileName << "|" << endl;
     exit(0);

@@ -73,13 +73,21 @@ DistMatrix::DistMatrix(const char* input_file, float clustering_radius,
     string pdb_name;
     char* cstr = new char[current_line.size() + 1];
     strcpy (cstr, current_line.c_str());
+    int offs = 0;
+    if (   cstr[0] != '\0'
+        && cstr[1] == ':'
+        && cstr[2] == '\\') { // Windows "C:\"
+      offs += 3;
+    }
     const char* separator = ":";
-    char* token = strtok(cstr, separator);
+    char* token = strtok(cstr+offs, separator);
 
     while (token != NULL) {
 
       if (energy_index == 0) { // first is PDB filename
-        pdb_name = string(token);
+        pdb_name = "";
+        if (offs != 0) pdb_name += string(cstr, offs);
+        pdb_name += string(token);
         _index_to_pdbname.push_back(pdb_name);
         _index_to_energy.push_back(vector<float>());
       } else { // following are any number of energies
