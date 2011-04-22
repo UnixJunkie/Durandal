@@ -38,11 +38,9 @@ Single& single = Single::instance(); // global var to this file
 bool is_shorter(pair<float, size_t> p1, pair<float, size_t> p2);
 bool has_less_entropy(pair<int, size_t> p1, pair<int, size_t> p2);
 
-DistMatrix::DistMatrix(const char* input_file, float clustering_radius,
-                       clock_t start) {
+DistMatrix::DistMatrix(const char* input_file, float clustering_radius) {
 
   _energy_present = false;
-  _start = start;
   _brute_delta_nb_undecided = 0;
   _smart_delta_nb_undecided = 0;
   _brute_delta_t = 0;

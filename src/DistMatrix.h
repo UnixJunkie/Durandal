@@ -51,7 +51,6 @@ class DistMatrix {
   int _nb_guessed;
   int _nb_undecided;
   int _nb_pairs;
-  clock_t _start;
   size_t _tabu_FIFO_max_size;
   DistRange** _matrix;
   float _clustering_radius;
@@ -100,8 +99,7 @@ class DistMatrix {
 
  public:
 
-  DistMatrix(const char* input_filename, float clustering_radius,
-             clock_t start);
+  DistMatrix(const char* input_filename, float clustering_radius);
   virtual ~DistMatrix();
 
   size_t get_nb_PDBs();
