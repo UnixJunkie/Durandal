@@ -34,7 +34,7 @@ using namespace std;
 class SimPDB
 {
  public:
-  std::string mProteinFileName;
+  string mProteinFileName;
   int mNumResidue;
   //double mSquaredSum;
   float * mCAlpha;
