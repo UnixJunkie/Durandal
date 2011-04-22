@@ -154,7 +154,7 @@ DistMatrix::DistMatrix(const char* input_file, float clustering_radius) {
   // at start, each PDB has all but himself nb undecided neighbors
   _nb_undecided_neighbors = vector<int>(_nb_PDBs, _nb_PDBs - 1);
   _nb_ca_rmsd_calls = 0;
-  _previous_i_used = numeric_limits<std::size_t>::max();
+  _previous_i_used = numeric_limits<size_t>::max();
   if (single._use_URMSD) {
     // N residues ==> N-1 Ca_i to Ca_j vectors on which to do the classic
     //                RMSD computation
