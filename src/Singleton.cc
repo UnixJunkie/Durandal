@@ -64,12 +64,11 @@ size_t rand_between(size_t lower_bound, size_t upper_bound) {
   return (lower_bound + (size_t) (upper_bound * (rand() / (RAND_MAX + 1.0))));
 }
 
-// 'man times' for details (Linux Programmer's Manual (2))
+// 'man times' for details (Linux Programmer's Manual (2) or POSIX)
 clock_t get_user_plus_system_times() {
 #if defined(_MSC_VER)
-  static std::clock_t t_start = std::clock();
-  return static_cast<double>(std::clock() - t_start)
-       / static_cast<double>(CLOCKS_PER_SEC);
+  static clock_t t_start = clock();
+  return (clock() - t_start);
 #else
   struct tms t;
   times(&t);
