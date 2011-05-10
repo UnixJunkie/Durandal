@@ -19,4 +19,4 @@ for trg,src in [
       ("rank_pdbs", "ranker")]:
   if (os.name == "nt"):
     trg += ".exe"
-  env.Program(target="#bin/durandal.%s" % trg, source=[src+".cc", lib])
+  env.Program(target="#Durandal/exe/%s" % trg, source=[src+".cc", lib])
