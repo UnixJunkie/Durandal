@@ -38,11 +38,9 @@ Single& single = Single::instance(); // global var to this file
 bool is_shorter(pair<float, size_t> p1, pair<float, size_t> p2);
 bool has_less_entropy(pair<int, size_t> p1, pair<int, size_t> p2);
 
-DistMatrix::DistMatrix(const char* input_file, float clustering_radius,
-                       clock_t start) {
+DistMatrix::DistMatrix(const char* input_file, float clustering_radius) {
 
   _energy_present = false;
-  _start = start;
   _brute_delta_nb_undecided = 0;
   _smart_delta_nb_undecided = 0;
   _brute_delta_t = 0;
@@ -156,7 +154,7 @@ DistMatrix::DistMatrix(const char* input_file, float clustering_radius,
   // at start, each PDB has all but himself nb undecided neighbors
   _nb_undecided_neighbors = vector<int>(_nb_PDBs, _nb_PDBs - 1);
   _nb_ca_rmsd_calls = 0;
-  _previous_i_used = numeric_limits<std::size_t>::max();
+  _previous_i_used = numeric_limits<size_t>::max();
   if (single._use_URMSD) {
     // N residues ==> N-1 Ca_i to Ca_j vectors on which to do the classic
     //                RMSD computation

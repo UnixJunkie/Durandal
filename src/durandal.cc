@@ -198,9 +198,6 @@ void output_cluster(ostream& out,
 }
 
 int main(int argc, char** argv) {
-  // <KEEP THIS AS FIRST THING IN MAIN>
-  clock_t start = get_user_plus_system_times();
-  // </KEEP THIS AS FIRST THING IN MAIN>
 
   if (argc == 1 or contains(argc, argv, "-h", "--help")) {
     usage(argv[0]);
@@ -262,7 +259,7 @@ int main(int argc, char** argv) {
   }
   float clustering_distance = atof(distance.c_str());
 
-  DistMatrix dm(input_file.c_str(), clustering_distance, start);
+  DistMatrix dm(input_file.c_str(), clustering_distance);
 
   if (auto_threshold) {
 
