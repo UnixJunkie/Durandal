@@ -22,3 +22,18 @@ The second alpha carbon in A.pdb will be matched to the second alpha carbon in
 B.pdb.
 And so on until the end of both files.
 If it is not the case, please edit all your PDB files in advance.
+
+IF YOU USE THIS SOFTWARE, PLEASE CITE THE CORRESPONDING PUBLICATION:
+
+@article{Berenger2011,
+author = {Berenger, Francois and Zhou, Yong and Shrestha, Rojan and Zhang, Kam Y. J.}, 
+title = {Entropy-accelerated exact clustering of protein decoys}, 
+volume = {27}, 
+number = {7}, 
+pages = {939-945}, 
+year = {2011}, 
+doi = {10.1093/bioinformatics/btr072}, 
+URL = {http://bioinformatics.oxfordjournals.org/content/27/7/939.abstract}, 
+eprint = {http://bioinformatics.oxfordjournals.org/content/27/7/939.full.pdf+html}, 
+journal = {Bioinformatics},
+}
