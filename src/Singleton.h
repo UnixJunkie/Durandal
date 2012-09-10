@@ -95,6 +95,13 @@ T pop_back(vector<T>& v) {
 
 // This is used for histogram output
 // will break histogram output format if changed
+template <class T, class U>
+ostream& operator<<(ostream& os, const pair<T, U>& p) {
+  return os << p.first << ' ' << p.second;
+}
+
+// This is used for histogram output
+// will break histogram output format if changed
 template <class T>
 ostream& operator<<(ostream& os, const vector<T>& v) {
   for (size_t i = 0 ; i < v.size() ; ++i) {
@@ -109,13 +116,6 @@ ostream& operator<<(ostream& os, const deque<T>& v) {
     os << v[i] << '\n';
   }
   return os << endl;
-}
-
-// This is used for histogram output
-// will break histogram output format if changed
-template <class T, class U>
-ostream& operator<<(ostream& os, const pair<T, U>& p) {
-  return os << p.first << ' ' << p.second;
 }
 
 template <class T>
