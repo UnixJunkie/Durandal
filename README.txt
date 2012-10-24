@@ -1,5 +1,5 @@
 # Copyright (C) 2010, 2011 Zhang Initiative Research Unit,
-# Advance Science Institute, Riken
+# Advance Science Institute, RIKEN
 # 2-1 Hirosawa, Wako, Saitama 351-0198, Japan
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Lesser General Public License as published by
@@ -7,24 +7,24 @@
 # (at your option) any later version.
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 # GNU Lesser General Public License for more details.
 # You should have received a copy of the GNU Lesser General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+# along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 IF YOU USE THIS SOFTWARE, PLEASE CITE THE CORRESPONDING PUBLICATION:
 ====================================================================
 
 @article{Berenger2011,
-author = {Berenger, Francois and Zhou, Yong and Shrestha, Rojan and Zhang, Kam Y. J.}, 
-title = {Entropy-accelerated exact clustering of protein decoys}, 
-volume = {27}, 
-number = {7}, 
-pages = {939-945}, 
-year = {2011}, 
-doi = {10.1093/bioinformatics/btr072}, 
-URL = {http://bioinformatics.oxfordjournals.org/content/27/7/939.abstract}, 
-eprint = {http://bioinformatics.oxfordjournals.org/content/27/7/939.full.pdf+html}, 
+author = {Berenger, Francois and Zhou, Yong and Shrestha, Rojan and
+          Zhang, Kam Y. J.},
+title = {Entropy-accelerated exact clustering of protein decoys},
+volume = {27},
+number = {7},
+pages = {939-945},
+year = {2011},
+doi = {10.1093/bioinformatics/btr072},
+URL = {http://bioinformatics.oxfordjournals.org/content/27/7/939.abstract},
 journal = {Bioinformatics},
 }
 
@@ -44,9 +44,10 @@ If it is not the case, please edit all your PDB files in advance.
 
 Output format (cluster listings):
 =================================
+
 Use the -v option to get easily readable cluster listings.
-Then, the output looks like this:
----
+Then, the output will look like this:
+
 pole position centers(5):
 ./pdbs/02.pdb
 ./pdbs/03.pdb
@@ -75,5 +76,5 @@ other PDBs are cluster members.
 Clusters are listed in a biggest-first (most members) order.
 
 The 'pole position centers(N):' and following lines
-indicate that there were other possible biggest clusters,
+indicate that there were other possible biggest clusters;
 only their centers are listed.
